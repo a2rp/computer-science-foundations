@@ -1,0 +1,73 @@
+/* theme.css */
+/* Computer Science Foundations Theme */
+
+:root {
+    /* Base - deep systems navy */
+    --color-bg: #0b0f18;
+    --color-surface: #121826;
+    --color-surface-2: #182133;
+
+    /* Primary - systems violet */
+    --color-primary: #7c5cff;
+    --color-primary-hover: #9a7dff;
+
+    /* Accent - hardware copper */
+    --color-accent: #ff8a3d;
+
+    /* Text */
+    --color-text-primary: #eef2ff;
+    --color-text-secondary: #c6d0e1;
+    --color-text-muted: #8c99b2;
+
+    /* Borders */
+    --color-border: #243047;
+    --color-border-light: #2f3d59;
+
+    /* Links */
+    --color-link: #7c5cff;
+    --color-link-hover: #9a7dff;
+
+    /* States */
+    --color-success: #22c55e;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+
+    /* Code blocks */
+    --color-code-bg: #0f1422;
+    --color-code-border: #27324a;
+
+    /* Shadow */
+    --color-shadow: rgba(0, 0, 0, 0.75);
+}
+
+/* Light Mode */
+
+html[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-surface: #f4f6ff;
+    --color-surface-2: #e9edff;
+
+    --color-primary: #5b3df0;
+    --color-primary-hover: #472ed6;
+
+    --color-accent: #d97706;
+
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+
+    --color-border: #dbe3f3;
+    --color-border-light: #cbd5e1;
+
+    --color-link: #5b3df0;
+    --color-link-hover: #472ed6;
+
+    --color-success: #16a34a;
+    --color-error: #dc2626;
+    --color-warning: #d97706;
+
+    --color-code-bg: #f3f5ff;
+    --color-code-border: #e2e8f0;
+
+    --color-shadow: rgba(15, 23, 42, 0.08);
+}

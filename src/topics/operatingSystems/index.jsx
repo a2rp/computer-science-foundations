@@ -16,7 +16,7 @@ import {
 const TRANSITION_MS = 220;
 
 const OperatingSystems = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     // load on click
     const [isMounted, setIsMounted] = useState(false);

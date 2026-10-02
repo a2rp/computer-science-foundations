@@ -211,7 +211,7 @@ select option {
 /* Light theme option fallback */
 html[data-theme="light"] select option {
     background: #ffffff;
-    color: #0f172a;
+    color: #171717;
 }
 
 /* Hover */

@@ -2,7 +2,7 @@
 
 A focused React and Vite revision workspace for the core subjects that shape real-world software systems, from operating systems and networks to databases and compilers.
 
-![Computer Science Foundations screenshot](screenshot.png)
+![Computer Science Foundations screenshot](./screenshot.jpg)
 
 ## Features
 

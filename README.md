@@ -1,6 +1,6 @@
 # Computer Science Foundations
 
-A focused React and Vite revision workspace for the core subjects that shape real-world software systems, from operating systems and networks to databases and compilers.
+An interactive computer science study guide with expandable lessons on operating systems, networks, databases, and compiler fundamentals.
 
 ![Computer Science Foundations screenshot](./screenshot.jpg)
 
@@ -8,6 +8,7 @@ A focused React and Vite revision workspace for the core subjects that shape rea
 
 - Structured navigation across systems, databases, networking, and compiler topics
 - Expandable notes with beginner-friendly explanations and practical examples
+- Lessons load when selected to keep the initial page download small
 - Independent study menu and content scrolling
 - Dark and light theme support
 - Responsive layout for desktop and mobile screens

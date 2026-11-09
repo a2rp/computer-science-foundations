@@ -13,6 +13,7 @@ export const Styled = {
         .sideMenu button:hover, .sideMenu button.active { background: var(--color-primary); border-color: var(--color-primary); color: #111111; }
         .contentWrapper { min-width: 0; padding: 4px 0; }
         .contentWrapper .topicBody { max-height: 12000px; }
+        .topicLoading { min-height: 180px; display: grid; place-items: center; color: var(--color-text-secondary); }
         .scrollTopButton { position: fixed; right: 24px; bottom: 24px; z-index: 10; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-surface); color: var(--color-text-primary); cursor: pointer; box-shadow: 0 8px 20px var(--color-shadow); }
         .scrollTopButton:hover { background: var(--color-primary); color: #111111; }
         .footerWrapper { flex-shrink: 0; }

@@ -102,7 +102,7 @@ const OperatingSystems = () => {
                     <div
                         id="os-panel"
                         className={`panel ${isVisible ? "open" : ""}`}
-                    >
+                     aria-hidden={!open} inert={!open ? "" : undefined}>
                         <div className="panelInner">
                             <section className="sec">
                                 <h3 className="h3">What an OS actually does</h3>

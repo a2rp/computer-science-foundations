@@ -73,7 +73,7 @@ const About = () => {
                     </button>
                 </div>
 
-                <div id="about-panel" className={`panel ${open ? "open" : ""}`}>
+                <div id="about-panel" className={`panel ${open ? "open" : ""}`} aria-hidden={!open} inert={!open ? "" : undefined}>
                     <div className="panelInner">
                         <div className="grid">
                             <div className="card">

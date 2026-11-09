@@ -18,7 +18,7 @@ import {
 const TRANSITION_MS = 220;
 
 const ProcessVsThread = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     // load on click
     const [isMounted, setIsMounted] = useState(false);
@@ -109,7 +109,7 @@ const ProcessVsThread = () => {
                     <div
                         id="pvt-panel"
                         className={`panel ${isVisible ? "open" : ""}`}
-                    >
+                     aria-hidden={!open} inert={!open ? "" : undefined}>
                         <div className="panelInner">
                             <section className="sec">
                                 <h3 className="h3">Simple meaning</h3>

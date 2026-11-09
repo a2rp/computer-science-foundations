@@ -17,7 +17,7 @@ import {
 const TRANSITION_MS = 220;
 
 const VirtualMemory = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     // load on click
     const [isMounted, setIsMounted] = useState(false);
@@ -103,7 +103,7 @@ const VirtualMemory = () => {
                     <div
                         id="vm-panel"
                         className={`panel ${isVisible ? "open" : ""}`}
-                    >
+                     aria-hidden={!open} inert={!open ? "" : undefined}>
                         <div className="panelInner">
                             <section className="sec">
                                 <h3 className="h3">Meaning in simple words</h3>

@@ -16,7 +16,7 @@ import {
 const TRANSITION_MS = 220;
 
 const FileSystems = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     // load on click
     const [isMounted, setIsMounted] = useState(false);
@@ -102,7 +102,7 @@ const FileSystems = () => {
                     <div
                         id="fs-panel"
                         className={`panel ${isVisible ? "open" : ""}`}
-                    >
+                     aria-hidden={!open} inert={!open ? "" : undefined}>
                         <div className="panelInner">
                             <section className="sec">
                                 <h3 className="h3">

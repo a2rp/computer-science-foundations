@@ -60,10 +60,10 @@ const HttpLifecycle = () => {
                         <FiSearch /> DNS lookup
                     </span>
                     <span className="pill">
-                        <FiLink /> TCP connect
+                        <FiLink /> TCP / QUIC connect
                     </span>
                     <span className="pill">
-                        <FiShield /> TLS handshake
+                        <FiShield /> TLS / QUIC handshake
                     </span>
                     <span className="pill">
                         <FiSend /> HTTP request
@@ -120,6 +120,25 @@ const HttpLifecycle = () => {
                                     receive an HTTP response. That full journey
                                     is the HTTP lifecycle.
                                 </p>
+
+                                <div className="callout">
+                                    <span className="cIcon">
+                                        <FiLayers />
+                                    </span>
+                                    <div className="cText">
+                                        <div className="cTitle">
+                                            The transport depends on the HTTP version
+                                        </div>
+                                        <div className="cSub">
+                                            HTTP/1.1 and HTTP/2 commonly use TCP,
+                                            with TLS for HTTPS. HTTP/3 uses QUIC
+                                            over UDP; QUIC integrates TLS 1.3
+                                            into its connection handshake. If
+                                            UDP is blocked, browsers can fall
+                                            back to a TCP-based HTTP version.
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div className="exampleBlock">
                                     <div className="exTitle">Example URL</div>
@@ -201,12 +220,14 @@ Browser asks:
                             </section>
 
                             <section className="sec">
-                                <h3 className="h3">Step 2 - TCP connection</h3>
+                                <h3 className="h3">Step 2 - Transport connection</h3>
                                 <p className="p">
-                                    After the IP is known, the browser opens a
+                                    For HTTP/1.1 or HTTP/2, the browser opens a
                                     TCP (Transmission Control Protocol)
-                                    connection to the server. TCP ensures
-                                    reliable delivery using a handshake.
+                                    connection to the server. HTTP/3 uses QUIC
+                                    over UDP instead. TCP and QUIC both provide
+                                    reliable delivery, but set up and manage the
+                                    connection differently.
                                 </p>
 
                                 <div className="miniGrid">
@@ -215,8 +236,9 @@ Browser asks:
                                             Handshake
                                         </div>
                                         <p className="miniText">
-                                            TCP typically uses a 3 step
-                                            handshake to start communication.
+                                            TCP uses a 3-step handshake. QUIC
+                                            establishes its secure connection
+                                            over UDP.
                                         </p>
                                     </div>
                                     <div className="miniCard">
@@ -242,13 +264,14 @@ Now the connection is established`}</pre>
 
                             <section className="sec">
                                 <h3 className="h3">
-                                    Step 3 - TLS handshake (for HTTPS)
+                                    Step 3 - Secure connection (for HTTPS)
                                 </h3>
                                 <p className="p">
-                                    If the URL is HTTPS, TLS (Transport Layer
-                                    Security) runs on top of TCP to create a
-                                    secure encrypted channel. It also verifies
-                                    server identity using certificates.
+                                    For HTTPS over TCP, TLS (Transport Layer
+                                    Security) creates a secure channel and
+                                    verifies the server using its certificate.
+                                    HTTP/3 uses QUIC, which integrates TLS 1.3
+                                    into its connection handshake.
                                 </p>
 
                                 <div className="callout">
@@ -484,7 +507,7 @@ Set-Cookie: sid=abc123; HttpOnly; Secure
 
                                 <div className="exampleBlock">
                                     <div className="exTitle">
-                                        Keep-alive idea
+                                        TCP keep-alive idea (HTTP/1.1 and HTTP/2)
                                     </div>
                                     <pre className="code">{`Without keep-alive:
 Request 1 -> open TCP -> close
@@ -520,21 +543,23 @@ Send many requests on the same connection`}</pre>
                                     <div className="lat">
                                         <div className="latTop">
                                             <FiLink />
-                                            <span>TCP</span>
+                                            <span>Transport</span>
                                         </div>
                                         <div className="latText">
-                                            Handshake and network RTT.
+                                            TCP handshake or QUIC setup and
+                                            network RTT.
                                         </div>
                                     </div>
 
                                     <div className="lat">
                                         <div className="latTop">
                                             <FiShield />
-                                            <span>TLS</span>
+                                            <span>TLS / QUIC</span>
                                         </div>
                                         <div className="latText">
-                                            Certificate validation and key
-                                            setup.
+                                            Certificate and key setup; TLS 1.3
+                                            is part of the QUIC handshake for
+                                            HTTP/3.
                                         </div>
                                     </div>
 
@@ -616,7 +641,8 @@ Send many requests on the same connection`}</pre>
                                     </div>
                                     <div className="abbr">
                                         <span className="mono">QUIC</span> -
-                                        Quick UDP Internet Connections
+                                        UDP-based secure transport used by
+                                        HTTP/3
                                     </div>
                                     <div className="abbr">
                                         <span className="mono">UDP</span> - User
@@ -646,10 +672,11 @@ Send many requests on the same connection`}</pre>
                                     <div className="pRow">
                                         <span className="label">A</span>
                                         <span className="value">
-                                            Because it adds a TLS handshake on
-                                            top of TCP. After the connection is
-                                            established, keep-alive and session
-                                            reuse reduce the overhead.
+                                            With HTTP/1.1 or HTTP/2, TLS adds
+                                            setup on the TCP connection. HTTP/3
+                                            negotiates TLS 1.3 as part of QUIC.
+                                            Connection reuse and session
+                                            resumption can reduce later setup.
                                         </span>
                                     </div>
 
@@ -678,14 +705,14 @@ Send many requests on the same connection`}</pre>
                                 </h3>
                                 <ul className="list">
                                     <li>
-                                        "Browser checks cache, then does DNS,
-                                        then TCP connect, then TLS for HTTPS,
-                                        then sends HTTP request and receives
-                                        response."
+                                        "After cache and DNS, HTTP/1.1 or HTTP/2
+                                        uses TCP and TLS for HTTPS. HTTP/3 uses
+                                        QUIC over UDP with TLS 1.3 in its
+                                        handshake."
                                     </li>
                                     <li>
                                         "Keep-alive reduces repeated TCP
-                                        handshakes. HTTP 2 multiplexing reduces
+                                        handshakes. HTTP/2 multiplexing reduces
                                         blocking and improves performance."
                                     </li>
                                     <li>

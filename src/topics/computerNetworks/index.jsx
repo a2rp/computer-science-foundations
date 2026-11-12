@@ -711,8 +711,8 @@ Both can send messages any time`}</pre>
                                 </h3>
                                 <ul className="list">
                                     <li>
-                                        "HTTP works on top of TCP, which
-                                        provides reliable ordered delivery."
+                                        "HTTP/1.1 and HTTP/2 commonly use TCP;
+                                        HTTP/3 uses QUIC over UDP."
                                     </li>
                                     <li>
                                         "DNS resolves a domain to an IP and is

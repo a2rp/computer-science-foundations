@@ -189,18 +189,26 @@ const HttpsAndSsl = () => {
                                             Where it sits
                                         </div>
                                         <p className="miniText">
-                                            HTTPS is HTTP on top of TLS, which
-                                            is on top of TCP.
+                                            HTTP/1.1 and HTTP/2 use TLS over
+                                            TCP. HTTP/3 carries HTTP over QUIC,
+                                            which integrates TLS 1.3 into its
+                                            handshake.
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="exampleBlock">
                                     <div className="exTitle">Stack view</div>
-                                    <pre className="code">{`Application: HTTP
-Security: TLS (often called SSL)
+                                    <pre className="code">{`HTTP/1.1 or HTTP/2 over HTTPS:
+Application: HTTP
+Security: TLS
 Transport: TCP
-Network: IP`}</pre>
+Network: IP
+
+HTTP/3 over HTTPS:
+Application: HTTP
+Transport/security: QUIC with TLS 1.3
+Network: IP (QUIC uses UDP)`}</pre>
                                 </div>
                             </section>
 

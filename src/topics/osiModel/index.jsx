@@ -296,7 +296,9 @@ const OsiModel = () => {
                                             4 - Transport
                                         </div>
                                         <p className="flowText">
-                                            TCP connects using port 443 (HTTPS).
+                                            HTTPS over HTTP/1.1 or HTTP/2
+                                            commonly uses TCP port 443. HTTP/3
+                                            commonly uses UDP port 443.
                                         </p>
                                     </div>
 

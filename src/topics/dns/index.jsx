@@ -194,7 +194,7 @@ const DNS = () => {
    - TLD DNS (.com): where is example.com?
    - Authoritative DNS: here is the IP
 
-Then the browser uses the IP to connect with TCP and HTTPS.`}</pre>
+Then the browser uses the IP to connect with TCP (HTTP/1.1 or HTTP/2) or QUIC over UDP (HTTP/3). HTTPS secures the connection.`}</pre>
                                 </div>
                             </section>
 
